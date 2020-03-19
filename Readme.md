@@ -1,4 +1,4 @@
-1) Installation
+# Installation
 
 $ git clone https://github.com/apastukhovs/Parse_test
 

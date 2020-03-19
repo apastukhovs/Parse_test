@@ -1,0 +1,15 @@
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+parse:
+    path: /parse
+    controller: App\Controller\DefaultController::parse
+
+video:
+    path: /video
+    controller: App\Controller\VideoController::index
+
+users:
+    path: /user
+    controller: App\Controller\UserDataController::index

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}UserData index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link active" href="{{ path('video') }}">Videos</a>
+          </li>
+            <a class="nav-link" href="{{ path('index') }}">Homepage</a>
+          </li>
+        </ul>
+    </div>    
+    <h1>UserData index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>User_ip</th>
+                <th>User_browser</th>
+                <th>Time</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user_datum in user_datas %}
+            <tr>
+                <td>{{ user_datum.id }}</td>
+                <td>{{ user_datum.userIp }}</td>
+                <td>{{ user_datum.userBrowser }}</td>
+                <td>{{ user_datum.time ? user_datum.time|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('user_data_show', {'id': user_datum.id}) }}">show</a>
+                    <a href="{{ path('user_data_edit', {'id': user_datum.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_data_new') }}">Create new</a>
+{% endblock %}

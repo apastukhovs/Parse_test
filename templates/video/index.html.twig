@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Video info{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('users') }}">Users</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('index') }}">Homepage</a>
+          </li>
+        </ul>
+    </div>    
+    <h1>Video info</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Video_key</th>
+                <th>Title</th>
+                <th>Old_title</th>
+                <th>Iframe</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for video in videos %}
+            <tr>
+                <td>{{ video.id }}</td>
+                <td>{{ video.videoKey }}</td>
+                <td>{{ video.title }}</td>
+                <td>{{ video.oldTitle }}</td>
+                <td>{{ video.iframe }}</td>
+                <td>{{ video.image }}</td>
+                <td>{{ video.description }}</td>
+                <td>
+                    <a href="{{ path('video_show', {'id': video.id}) }}">show</a>
+                    <a href="{{ path('video_edit', {'id': video.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('video_new') }}">Create new</a>
+{% endblock %}
